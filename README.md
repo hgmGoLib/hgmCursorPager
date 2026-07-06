@@ -13,16 +13,23 @@ go get github.com/hgmGoLib/hgmCursorPager
 
 1. 先去看 `hgmCursorPagerExample/`(readme.txt + post.go + front/PostListPage.svelte),
    30 分钟把后端 + 前端跑出脑内 model.
-2. 再回头读本 README 当 API reference / 边界场景速查.
-3. 协议契约本身见 [doc/pager_design.md](./doc/pager_design.md) (本库严格实现这一份),
-   设计取舍 / 踩坑记录见 [doc/pager_design_notes.md](./doc/pager_design_notes.md).
+2. 接入时逐条过 [doc/integration_checklist.md](./doc/integration_checklist.md).
+3. 再回头读本 README 当 API reference / 边界场景速查.
+4. 协议契约本身见 [doc/pager_design.md](./doc/pager_design.md) (本库严格实现这一份);
+   为什么这么设计 (为什么不统计总数 / 为什么不透明 token …) 见
+   [doc/design_rationale.md](./doc/design_rationale.md).
 
-## 目录
+## 文档目录
 
 * [doc/pager_design.md](./doc/pager_design.md) — 协议契约原文 (排序键 / 三 case SQL /
   前端动作分支 / UI 元素 / 测试矩阵). 本库严格按这份实现.
-* [doc/pager_design_notes.md](./doc/pager_design_notes.md) — 设计探索 / 踩过的坑.
-* `hgmCursorPagerExample/` — 端到端范本 (Web server + ORM + svelte). 配 readme.txt 逐步讲解.
+* [doc/integration_checklist.md](./doc/integration_checklist.md) — 对接 checklist,
+  给新列表接入时逐条勾.
+* [doc/design_rationale.md](./doc/design_rationale.md) — 设计选择的理由 (Why):
+  为什么用游标 / 为什么不允许统计总数 / 为什么 token 不透明不签名 / 为什么容忍末页假阳性 …
+* [doc/pager_design_notes.md](./doc/pager_design_notes.md) — 设计探索 / 踩过的坑
+  (原始 bug、第一版止血、第二轮取舍).
+* `hgmCursorPagerExample/` — 端到端范本 (net/http + svelte 5). 零依赖可 `go run`, 配 readme.txt 逐步讲解.
 * `hgmCursorPagerTest/` — 22 个 case 的协议测试 + 内存版 backend / frontend 状态机.
   兼作 "协议示范代码", 零依赖可直接 `go test`.
 

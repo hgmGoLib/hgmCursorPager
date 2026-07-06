@@ -26,7 +26,7 @@ scenario: 一个最简单的 "Post 列表 + 按作者过滤" 列表页. 排序�
 ========
   hgmCursorPagerExample/
   ├── readme.txt              ← 你正在读这个
-  ├── go.mod                  ← 单独的 module, 用 replace 指回 ../ (hgmCursorPager)
+  ├── go.mod                  ← 单独的 module, require 已发布的 github.com/hgmGoLib/hgmCursorPager
   ├── main.go                 ← net/http server + 内存 store 初始化 (seed 25 条)
   ├── post.go                 ← Post_D 数据模型 + GetPostList 端点 (核心示范)
   └── front/
